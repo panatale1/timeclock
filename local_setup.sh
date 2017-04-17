@@ -24,6 +24,7 @@ if [[ -z $(echo $VIRTUAL_ENV) ]]; then
 	workon $VENV_NAME
 fi
 pip install --upgrade -r requirements.txt
+apt-get install postgresql
 cd $VENV_NAME
 ./manage.py syncdb
 ./manage.py migrate
