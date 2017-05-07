@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'compressor',
     'selectable',
     'django_extensions',
+    'debug_toolbar',
+    'timeclock',
     # MUST COME LAST
     'timepiece',
     'timepiece.contracts',
@@ -55,6 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'timeclock.urls'
@@ -64,16 +67,18 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'OPTIONS': {
             'context_processors': [
-		'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.debug',
-		'django.core.context_processors.il8n',
+                'django.contrib.auth.context_processors.auth',
+                'django.core.context_processors.debug',
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.media',
                 'django.contrib.messages.context_processors.messages',
-		'django.core.context_processors.request',
-		'timepiece.context_processors.quick_clock_in',
-		'timepiece.context_processors.quick_search',
-		'timepiece.context_processors.extra_settings',
+                'django.core.context_processors.request',
+                'timepiece.context_processors.quick_clock_in',
+                'timepiece.context_processors.quick_search',
+                'timepiece.context_processors.extra_settings',
             ],
         },
     },
@@ -101,7 +106,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -122,8 +127,15 @@ COMPRESS_ROOT = '%s/static/' % BASE_DIR
 
 INTERNAL_IPS = ('127.0.0.1')
 
-TEMPLATE_DIRS = (
-    '%s/templates' % BASE_DIR,
+SHELL_PLUS = 'ipython'
+
+USE_TZ = False
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
 
-SHELL_PLUS = 'ipython'
+STATIC_ROOT = '%s/static/' % BASE_DIR
+
