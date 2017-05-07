@@ -30,10 +30,9 @@ apt-get install nodejs npm
 npm install -g less@1.7.5
 pip install --upgrade -r requirements.txt
 apt-get install postgresql
-echo "useradd python -s /bin/bash -m -g postgres"
-chpasswd << 'END'
-python:Python
-END
+su -u postgres
+psql CREATE USER python WITH PASSWORD 'Python';
+echo "exit"
 cd $VENV_NAME
 ./manage.py syncdb
 ./manage.py migrate
