@@ -23,8 +23,17 @@ fi
 if [[ -z $(echo $VIRTUAL_ENV) ]]; then
 	workon $VENV_NAME
 fi
+apt-get install python-software-properties
+add-apt-repository ppa:chris-lea/node.js
+apt-get update
+apt-get install nodejs npm
+npm install -g less@1.7.5
 pip install --upgrade -r requirements.txt
 apt-get install postgresql
+echo "useradd python -s /bin/bash -m -g postgres"
+chpasswd << 'END'
+python:Python
+END
 cd $VENV_NAME
 ./manage.py syncdb
 ./manage.py migrate
