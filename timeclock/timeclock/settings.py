@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'compressor',
     'selectable',
     'django_extensions',
-    'debug_toolbar',
     'timeclock',
     # MUST COME LAST
     'timepiece',
@@ -57,7 +56,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'timeclock.urls'
