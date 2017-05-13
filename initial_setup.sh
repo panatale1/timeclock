@@ -25,7 +25,7 @@ fi
 # add other reqs to package list
 packages+=" libpq-dev postgresql postgresql-contrib nginx python-software-properties nodejs npm"
 
-add-apt-repository ppa:chris-lea/node.js
+add-apt-repository ppa:chris-lea/node.js -y
 apt-get update
 
 # install packages
