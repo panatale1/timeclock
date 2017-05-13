@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# MUST BE RUN AS ROOT FROM SAME DIRECTORY AS DJANGO.PSQL
 VENV_NAME="timeclock"
 VENV_DIR="$HOME/.virtualenvs"
 
@@ -31,7 +33,7 @@ npm install -g less@1.7.5
 pip install --upgrade -r requirements.txt
 apt-get install postgresql
 su postgres
-psql -a -f /vagrant/django.psql
+psql -a -f django.psql
 echo "exit"
 cd $VENV_NAME
 ./manage.py syncdb
