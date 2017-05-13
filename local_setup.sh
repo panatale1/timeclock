@@ -32,7 +32,16 @@ apt-get install nodejs npm
 npm install -g less@1.7.5
 pip install --upgrade -r requirements.txt
 apt-get install postgresql
+<<<<<<< HEAD
 su -c 'psql -a -f django.psql' postgres
 #cd $VENV_NAME
 #./manage.py syncdb
 #./manage.py migrate
+=======
+su postgres
+psql -a -f django.psql
+echo "exit"
+cd $VENV_NAME
+./manage.py syncdb
+./manage.py migrate
+>>>>>>> 71270ff891a658807fe93e0cfec4df3bd8a6c2c0
