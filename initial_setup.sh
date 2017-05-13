@@ -1,6 +1,10 @@
 #1/bin/bash
 
+<<<<<<< Updated upstream
 if [[ $(id -u) -ne 0 ]]; then
+=======
+if [[ $(id -u -ne 0) ]]; then
+>>>>>>> Stashed changes
 	echo "Please run as root"
 	exit 1
 fi
@@ -10,8 +14,13 @@ else
 	echo "Python already installed"
 fi
 pip=$(which pip)
+<<<<<<< Updated upstream
 if [["$?" -ne 0]]; then
 	apt-get install -u python-pip
+=======
+if [[ "$?" -ne 0 ]]; then
+	apt-get install --upgrade python-pip
+>>>>>>> Stashed changes
 fi
 pip install virtualenv
 pip install virtualenvwrapper

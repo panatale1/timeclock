@@ -1,0 +1,6 @@
+CREATE DATABASE timeclock;
+CREATE USER python WITH PASSWORD 'Python';
+ALTER ROLE python SET client_encoding TO 'utf8';
+ALTER ROLE python SET default_transaction_isolation TO 'read committed';
+ALTER ROLE python SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE timeclock TO python;
