@@ -87,3 +87,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+timeclock/node_modules/
