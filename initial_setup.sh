@@ -1,7 +1,7 @@
 #1/bin/bash
 
 # Only run as root
-if [[ $(id -u -ne 0) ]]; then
+if [[ $(id -u) -ne 0 ]]; then
 	echo "Please run as root"
 	exit 1
 fi
