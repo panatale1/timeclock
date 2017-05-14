@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo bash initial_setup.sh
-bash local_setup.sh
+sudo initial_setup.sh
+local_setup.sh
