@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# NEVER run as root
+if [[ $(id -u) -eq 0 ]]; then
+	echo "Do NOT run as root"
+	exit 1
+fi
+
+
 # Expected to be run as the user that will serve the application
 VENV_NAME="timeclock"
 VENV_DIR="$HOME/.virtualenvs"
@@ -37,6 +44,8 @@ if [[ -z $(echo $VIRTUAL_ENV) ]]; then
 	workon $VENV_NAME
     pip install --upgrade -r requirements.txt
 fi
+
+echo "Either run \"source \$(which virtualenvrapper.sh)\" or exit and enter a new shell to enable virtualenvwrapper.sh"
 
 #TODO move to deploy script
 #cd $VENV_NAME
