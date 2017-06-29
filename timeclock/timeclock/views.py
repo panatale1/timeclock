@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 from six.moves.urllib.parse import urlencode
 
 from timepiece.crm.utils import grouped_totals
-from timepiece.crm.views import ProjectTimesheet, ProjectTimesheetCSV
+from timepiece.crm.views import ProjectTimesheet, ProjectTimesheetCSV, ListUsers
 from timepiece.entries.forms import ClockInForm
 from timepiece.entries.models import Entry, ProjectHours
 from timepiece.entries.views import Dashboard
@@ -262,3 +262,9 @@ class UpdatedProjectTimesheetCSV(CSVViewMixin, UpdatedProjectTimesheet):
         total = context['total']
         rows.append(('', '', '', '', 'Total:', total))
         return rows
+
+
+class ListUsersAlpha(ListUsers):
+
+    def get_queryset(self):
+        return super(ListUsersAlpha, self).get_queryset().order_by('last_name')

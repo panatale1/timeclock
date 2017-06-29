@@ -3,7 +3,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from .admin_views import HourlyReport, VolunteerReport
-from .views import (ProfileView, CustomDashboard, clock_in, clock_out,
+from .views import (ProfileView, CustomDashboard, clock_in, clock_out, ListUsersAlpha,
                     view_user_timesheet, UpdatedProjectTimesheet, UpdatedProjectTimesheetCSV)
 
 urlpatterns = [
@@ -23,6 +23,7 @@ urlpatterns = [
         UpdatedProjectTimesheet.as_view(), name='view_project_timesheet'),
     url(r'^project/(?P<project_id>\d+)/timesheet/csv/$',
         UpdatedProjectTimesheetCSV.as_view(), name='view_project_timesheet_csv'),
+    url(r'^user/$', ListUsersAlpha.as_view(), name='list_users'),
     url(r'^', include('timepiece.urls')),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='auth_login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout_then_login', name='auth_logout'),
