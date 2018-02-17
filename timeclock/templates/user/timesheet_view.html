@@ -193,7 +193,7 @@
                                 {% endfor %}
                                 <tr class="emphasized-row">
                                     <th colspan=8 style="text-align: right;">Total over all entries:</th>
-                                    <th class="hours">{{ summary.total|humanize_hours:"{hours:02d}:{minutes:02d}" }}</th>
+				    <th class="hours">{{ summary.total|humanize_hours:"{hours:02d}:{minutes:02d}:{seconds:02d}" }}</th>
                                     <th colspan=3></th>
                                 </tr>
                             </tbody>
