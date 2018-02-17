@@ -127,7 +127,7 @@ You are not currently clocked into a project.
 <div class="tab-pane{% if active_tab == 'all-entries' %} active{% endif %}" id="all-entries">
 {% if week_entries %}
 {% url 'dashboard' active_tab='all-entries' as next_url %}
-{% regroup week_entries by start_time|date:'l, F j' as daily_entries %}
+{% regroup week_entries by start_time|date:'l, F j, Y' as daily_entries %}
 <table class="table table-hover table-bordered">
 <thead>
 <tr>
@@ -190,6 +190,12 @@ current
 </tr>
 {% endfor %}
 {% endfor %}
+{% sum_hours week_entries as full_total %}
+<tr>
+	<td colspan="5"><strong>Total Hours:</strong></td>
+	<td><strong>{{ full_total|humanize_seconds:"{hours:02d}:{minutes:02d}:{seconds:02d}" }}</strong></td>
+	<td colspan="2">&nbsp;</td>
+</tr>
 </tbody>
 </table>
 {% else %}
