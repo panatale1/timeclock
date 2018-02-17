@@ -145,11 +145,16 @@ def view_user_timesheet(request, user_id, active_tab):
         from_date = add_timezone(from_date)
         to_date = add_timezone(to_date)
     else:
-        from_date = get_month_start()
-        to_date = from_date + relativedelta(months=1)
+        # from_date = get_month_start()
+        # to_date = from_date + relativedelta(months=1)
+        from_date = Entry.objects.last().start_time
+        to_date = datetime.datetime.today()
 
     entries_qs = Entry.objects.filter(user=user)
-    month_qs = entries_qs.timespan(from_date, span='month')
+    if form.is_valid():
+        month_qs = entries_qs.timespan(from_date, span='month')
+    else:
+        month_qs = entries_qs.timespan(from_date)
     extra_values = (
         'start_time', 'end_time', 'comments', 'seconds_paused', 'id', 'location__name',
         'project__name', 'activity__name', 'status')

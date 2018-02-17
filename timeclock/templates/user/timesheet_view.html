@@ -139,7 +139,6 @@
                     </div>
                 </div>
                 <div class="tab-pane{% if active_tab == 'all-entries' %} active{% endif %}" id="all-entries">
-
                     {% if entries %}
                         {% url 'view_user_timesheet' timesheet_user.pk 'all-entries' as next_url %}
                         <table class="table table-bordered table-condensed table-hover">
