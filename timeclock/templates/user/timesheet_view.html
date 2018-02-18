@@ -148,10 +148,8 @@
                                     <th class="project">Project</th>
                                     <th class="activity">Activity</th>
                                     <th>Location</th>
-                                    <th>Status</th>
                                     <th class="time">Time In</th>
                                     <th class="time">Time Out</th>
-                                    <th class="time">Breaks</th>
                                     <th class="time">Hours</th>
                                     <th class="comments">Comments</th>
 				    <th class="comments">Tasks</th>
@@ -174,10 +172,8 @@
                                         <td class="project">{{ entry.0.project__name }}</td>
                                         <td class="activity">{{ entry.0.activity__name }}</td>
                                         <td>{{ entry.0.location__name }}</td>
-                                        <td>{{ entry.0.status|title }}</td>
                                         <td class="time break">{{ entry.0.start_time|time }}</td>
                                         <td class="time break">{{ entry.0.end_time|time }}</td>
-                                        <td class="hours time">{{ entry.0.seconds_paused|seconds_to_hours|humanize_hours:"{hours:02d}:{minutes:02d}:{seconds:02d}" }}</td>
                                         <td class="hours time">{{ entry.0.hours|humanize_hours:"{hours:02d}:{minutes:02d}:{seconds:02d}" }}</td>
                                         <td class="comments" title="{{entry.0.comments}}">{{ entry..0comments|safe }}</td>
 					<td class="comments">{{ entry.1 }}</td>
@@ -192,7 +188,8 @@
                                     </tr>
                                 {% endfor %}
                                 <tr class="emphasized-row">
-                                    <th colspan=8 style="text-align: right;">Total over all entries:</th>
+                                        <td>{{ entry.0.status|title }}</td>
+                                    <th colspan=5 style="text-align: right;">Total over all entries:</th>
 				    <th class="hours">{{ summary.total|humanize_hours:"{hours:02d}:{minutes:02d}:{seconds:02d}" }}</th>
                                     <th colspan=3></th>
                                 </tr>

@@ -135,7 +135,6 @@ You are not currently clocked into a project.
 <th class="hidden-phone">Activity</th>
 <th>From</th>
 <th>To</th>
-<th class="hidden-phone">Pause Time</th>
 <th>Total Time</th>
 <th class="hidden-phone">Comment</th>
 <th class="hidden-phone">Tasks</th>
@@ -145,7 +144,7 @@ You are not currently clocked into a project.
 {% for day in daily_entries %}
 {% sum_hours day.list as daily_total %}
 <tr>
-<th colspan="4" style="border-right: 0px;">{{ day.grouper }}</th>
+<th colspan="3" style="border-right: 0px;">{{ day.grouper }}</th>
 <th style="border-left: 0px;" class="hidden-phone th-continued" ></th>
 <th class="th-continued" >{{ daily_total|humanize_seconds:"{hours:02d}:{minutes:02d}:{seconds:02d}" }}</th>
 <th class="hidden-phone th-continued"></th>
@@ -171,13 +170,6 @@ You are not currently clocked into a project.
 current
 {% endif %}
 </td>
-<td class="hidden-phone nowrap">
-{% with entry.get_paused_seconds as pause_time %}
-{% if pause_time %}
-{{ pause_time|humanize_seconds }}
-{% endif %}
-{% endwith %}
-</td>
 <td class="nowrap">{{ entry.get_total_seconds|humanize_seconds:"{hours:02d}:{minutes:02d}:{seconds:02d}" }}</td>
 <td class="hidden-phone">
 {% if entry.comments|length > 50 %}
@@ -192,7 +184,7 @@ current
 {% endfor %}
 {% sum_hours week_entries as full_total %}
 <tr>
-	<td colspan="5"><strong>Total Hours:</strong></td>
+	<td colspan="4"><strong>Total Hours:</strong></td>
 	<td><strong>{{ full_total|humanize_seconds:"{hours:02d}:{minutes:02d}:{seconds:02d}" }}</strong></td>
 	<td colspan="2">&nbsp;</td>
 </tr>
